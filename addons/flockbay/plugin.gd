@@ -12,6 +12,7 @@ extends EditorPlugin
 const MENU_ITEM := "Open this project in Flockbay"
 const APP_PATH_SETTING := "flockbay/app_path"
 const DOWNLOAD_URL := "https://flockbay.com/get/"
+const MAC_EXECUTABLE := "Contents/MacOS/flockbay-desktop"
 
 
 func _enter_tree() -> void:
@@ -44,9 +45,12 @@ func _open_in_flockbay() -> void:
 
 
 ## The Flockbay app: the path set in Editor Settings > Flockbay > App Path, or
-## where its installer puts it.
+## where its installer puts it. On macOS a path to Flockbay.app resolves to the
+## executable inside the bundle.
 func _find_app() -> String:
 	var configured := str(EditorInterface.get_editor_settings().get_setting(APP_PATH_SETTING))
+	if configured.ends_with(".app") or configured.ends_with(".app/"):
+		configured = configured.path_join(MAC_EXECUTABLE)
 	if not configured.is_empty() and FileAccess.file_exists(configured):
 		return configured
 	var candidates := PackedStringArray()
@@ -60,7 +64,8 @@ func _find_app() -> String:
 				if not found.is_empty():
 					candidates.append(found)
 		"macOS":
-			candidates.append("/Applications/Flockbay.app/Contents/MacOS/Flockbay")
+			for dir in ["/Applications", OS.get_environment("HOME").path_join("Applications")]:
+				candidates.append(dir.path_join("Flockbay.app").path_join(MAC_EXECUTABLE))
 	for candidate in candidates:
 		if FileAccess.file_exists(candidate):
 			return candidate
@@ -81,7 +86,7 @@ func _first_appimage(dir: String) -> String:
 func _offer_download() -> void:
 	var dialog := ConfirmationDialog.new()
 	dialog.title = "Flockbay is not installed"
-	dialog.dialog_text = "Flockbay is a free AI game maker built on Godot, for Windows and Linux.\nInstall it, then choose this menu item again.\n\nIf it is installed somewhere else, set Editor Settings > Flockbay > App Path."
+	dialog.dialog_text = "Flockbay is a free AI game maker built on Godot, for Windows, macOS and Linux.\nInstall it, then choose this menu item again.\n\nIf it is installed somewhere else, set Editor Settings > Flockbay > App Path."
 	dialog.ok_button_text = "Download Flockbay"
 	dialog.confirmed.connect(func() -> void: OS.shell_open(DOWNLOAD_URL))
 	dialog.visibility_changed.connect(func() -> void:

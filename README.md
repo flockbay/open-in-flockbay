@@ -23,8 +23,8 @@ Flockbay adds the project and opens it. It asks once before it adds anything
 of its own to the project, and lists what it added.
 
 If Flockbay is not installed, the menu item offers the free download
-(Windows and Linux). If it is installed somewhere unusual, set
+(Windows, macOS and Linux). If it is installed somewhere unusual, set
 **Editor Settings > Flockbay > App Path** to the app (on Windows
-`flockbay-desktop.exe`, on Linux the `.AppImage`).
+`flockbay-desktop.exe`, on macOS `Flockbay.app`, on Linux the `.AppImage`).
 
 Godot 4.2 or later. MIT licensed.
