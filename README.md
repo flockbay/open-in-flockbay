@@ -28,3 +28,8 @@ If Flockbay is not installed, the menu item offers the free download
 `flockbay-desktop.exe`, on macOS `Flockbay.app`, on Linux the `.AppImage`).
 
 Godot 4.2 or later. MIT licensed.
+
+## Related
+
+- [The best Godot MCP server, compared](https://flockbay.com/blog/best-godot-mcp-server/)
+- [The best AI for Godot: 28 models on 15 Godot 4 tasks](https://flockbay.com/blog/best-ai-for-godot/)
