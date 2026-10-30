@@ -1,16 +1,15 @@
 # Open in Flockbay
 
 A Godot 4 editor plugin that opens the project you have open in
-[Flockbay](https://flockbay.com), the free AI game maker built on the official
-Godot engine.
+[Flockbay](https://flockbay.com).
 
-Flockbay's AI builds and play-tests a whole Godot game: it writes the GDScript
-and the scenes, builds the world with tools for terrain, water, sky, weather,
-the player controller and props, runs the game, sends it input events, reads
-the debugger and captures the viewport to check its work. It runs on free
-hosted AI every day, or on your own Claude or ChatGPT, and your own agent
-(Claude Code, Codex, Cursor) can work on the same game over MCP. The project
-stays a normal Godot project on your disk.
+Flockbay is a free AI game maker built on Godot: free AI to start or your own
+Claude or ChatGPT builds and play-tests a real Godot 4 project, on Windows,
+macOS and Linux. It writes the GDScript and the scenes, runs the game, sends
+it input events, reads the debugger and captures the viewport to check its
+work, and your own agent (Claude Code, Codex, Cursor) can work on the same
+game over MCP. Flockbay runs the official Godot engine, not a fork, and the
+project stays a normal Godot project on your disk.
 
 ## Use
 
